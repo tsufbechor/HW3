@@ -1,3 +1,4 @@
 public interface Animal {
-    String getAnimal();
+    public abstract String getAnimal();
+
 }

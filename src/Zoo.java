@@ -50,7 +50,7 @@ public class Zoo {
     public void addAnimal(Animal animal){
         this.animals.add(animal);
         for (ZooObserver observer: observers) {
-            observer.notifyObserver(animal.getClass().getName());
+            observer.notifyObserver(animal.getAnimal());
         }
     }
     public void showAnimalsInfo(){
@@ -75,7 +75,7 @@ public class Zoo {
         HashMap<String,Integer> splits=new HashMap<>();
         String type;
         for (Animal animal:this.animals) {
-            type=animal.getClass().getName();
+            type=animal.getAnimal();
             if(splits.containsKey(type)){
                splits.replace(type,splits.get(type)+1);
             }
