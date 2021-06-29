@@ -36,9 +36,7 @@ public class Zoo {
     }
     public void feedAnimals(){
         for (Animal animal:animals) {
-            if(this.observers!=null) {
-                this.observers.get(0).notifyFood(animal.getAnimal());
-            }
+            animal.feedAnimal();
         }
         System.out.println("Notifying observers:");
         for (ZooObserver observer:this.observers) {
@@ -50,8 +48,7 @@ public class Zoo {
     }
     public void watchAnimals(){
         for (Animal animal:animals) {
-            if(this.observers!=null)
-                this.observers.get(0).notifyPlay(animal.getAnimal());
+            animal.watchAnimal();
         }
         System.out.println("Notifying observers:");
         for (ZooObserver observer:this.observers) {
@@ -75,16 +72,16 @@ public class Zoo {
         System.out.println("The zoo contains total of " + animals.size() + " animals:");
         HashMap<String,Integer> splits=this.animalSplit();
         for (String type: splits.keySet()) {
-            System.out.println("- "+ type +":"+ splits.get(type));
+            System.out.println("- "+ type +": "+ splits.get(type));
         }
-        System.out.println("Happiness level:"+this.happiness);
+        System.out.println("Happiness level: "+this.happiness);
         if(this.happiness < SPLITLEVEL){
             System.out.println("The animals are not happy, you should watch them...");
         }
         else{
             System.out.println("The animals are very happy, keep working hard…");
         }
-        System.out.println("Hunger  level:"+this.hunger );
+        System.out.println("Hunger  level: "+this.hunger );
         if(this.hunger  > SPLITLEVEL){
             System.out.println("The animals are hungry, you should feed them…");
         }

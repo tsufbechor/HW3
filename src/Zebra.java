@@ -4,6 +4,6 @@ class Zebra implements Animal {
     public String getAnimal() {
         return "Zebra";
     }
-    public String feedAnimal(){return "The zebra is eating grass...";}
-    public String watchAnimal(){return "The zebra is running...";}
+    public void feedAnimal(){System.out.println("The zebra is eating grass...");}
+    public void watchAnimal(){System.out.println("The zebra is running...");}
 }

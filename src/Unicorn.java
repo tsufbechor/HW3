@@ -4,6 +4,6 @@ class Unicorn implements Animal {
     public  String getAnimal() {
         return "Unicorn";
     }
-    public String feedAnimal(){ return "The unicorn is eating rainbow cakes...";}
-    public String watchAnimal(){return "The unicorn is flying...";}
+    public void feedAnimal(){ System.out.println( "The unicorn is eating rainbow cakes...");}
+    public void watchAnimal(){System.out.println( "The unicorn is flying...");}
 }

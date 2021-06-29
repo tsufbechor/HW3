@@ -4,6 +4,6 @@ class Monkey implements Animal {
     public String getAnimal() {
         return "Monkey";
     }
-    public String feedAnimal(){ return "The monkey is eating a banana...";}
-    public String watchAnimal(){return "The monkey is hanging on trees...";}
+    public void feedAnimal(){System.out.println("The monkey is eating a banana...");}
+    public void watchAnimal(){System.out.println("The monkey is hanging on trees...");}
 }
