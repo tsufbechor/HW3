@@ -7,7 +7,15 @@ public class ZooObserver {
     }
 
     public void notifyObserver(String animal) {
-            System.out.println("[" + this.name + "] " + animal + " has been added to the Zoo!");
+        switch(animal) {
+            case "fed":
+                System.out.println("[" + this.name + "] The animals are being fed");
+            case "watch":
+                System.out.println("[" + this.name + "] The animals are being watched");
+            default :
+                System.out.println("[" + this.name + "] " + animal + " has been added to the zoo!");
+        }
+
     }
     public void notifyFood(String animal,String food)
     {
