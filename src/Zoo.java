@@ -35,11 +35,28 @@ public class Zoo {
         this.observers.remove(observer);
     }
     public void feedAnimals(){
+        for (Animal animal:animals) {
+            if(this.observers!=null) {
+                this.observers.get(0).notifyFood(animal.getAnimal());
+            }
+        }
+        System.out.println("Notifying observers:");
+        for (ZooObserver observer:this.observers) {
+            observer.notifyObserver("fed");
+        }
         if(this.hunger > MINLEVEL){
             this.hunger--;
         }
     }
     public void watchAnimals(){
+        for (Animal animal:animals) {
+            if(this.observers!=null)
+                this.observers.get(0).notifyPlay(animal.getAnimal());
+        }
+        System.out.println("Notifying observers:");
+        for (ZooObserver observer:this.observers) {
+            observer.notifyObserver("watch");
+        }
         if(this.happiness < MAXLEVEL){
             this.happiness++;
         }
@@ -49,6 +66,7 @@ public class Zoo {
     }
     public void addAnimal(Animal animal){
         this.animals.add(animal);
+        System.out.println("Notifying observers:");
         for (ZooObserver observer: observers) {
             observer.notifyObserver(animal.getAnimal());
         }
