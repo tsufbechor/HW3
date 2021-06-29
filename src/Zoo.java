@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Zoo {
+    /** Initializing the zoo...*/
     private static Zoo instance = null;
     private ArrayList<Animal> animals;
     private ArrayList<ZooObserver> observers;
@@ -17,7 +18,7 @@ public class Zoo {
         happiness = 2;
         hunger  = 3;
     }
-
+/** Function will print message according to if zoo exists or not*/
     public static Zoo getInstance(){
         if(instance == null){
             instance=new Zoo();
@@ -34,6 +35,10 @@ public class Zoo {
     public void removeObserver(ZooObserver observer){
         this.observers.remove(observer);
     }
+
+    /** feedAnimals function will first run 'for loop' and call the feedAnimal function for each animal in the zoo
+     * and then notify each observer that the animals have been feed. After that,hunger level will be adjusted if necessary
+     */
     public void feedAnimals(){
         for (Animal animal:animals) {
             animal.feedAnimal();
@@ -46,6 +51,10 @@ public class Zoo {
             this.hunger--;
         }
     }
+
+    /**watchAnimals function will first run 'for loop' and call the watchAnimal function for each animal in the zoo
+     * and then notify all the observers. After that, hunger and happiness levels will be adjusted if necessary
+     */
     public void watchAnimals(){
         for (Animal animal:animals) {
             animal.watchAnimal();
@@ -61,6 +70,7 @@ public class Zoo {
             this.hunger++;
         }
     }
+    /**Function will add animal to zoo, and then notify each and every observer of the addition*/
     public void addAnimal(Animal animal){
         this.animals.add(animal);
         System.out.println("Notifying observers:");
@@ -68,6 +78,12 @@ public class Zoo {
             observer.notifyObserver(animal.getAnimal());
         }
     }
+
+    /**Function will print the amount of animals the zoo contains in total,
+     *  and then specifically the number of each different animal
+     * After this, the happiness and hunger levels will be printed,
+     * an according message will be printed if ony of these levels is not of legal value
+     */
     public void showAnimalsInfo(){
         System.out.println("The zoo contains total of " + animals.size() + " animals:");
         HashMap<String,Integer> splits=this.animalSplit();
@@ -91,7 +107,7 @@ public class Zoo {
         String type;
         for (Animal animal:this.animals) {
             type=animal.getAnimal();
-            if(splits.containsKey(type)){
+            if(splits.containsKey(type)){//Checking if the animal type is prevalent in zoo,if not hashmap will be adjusted for new animal
                splits.replace(type,splits.get(type)+1);
             }
             else{

@@ -5,6 +5,7 @@ public class ZooObserver {
     public ZooObserver(String name) {
         this.name = name;
     }
+    /**Function will notify observer accordingly*/
     public void notifyObserver(String animal) {
         switch(animal) {
             case "fed":
